@@ -15,7 +15,7 @@ public class FacturaManagedBean implements Serializable{
     private Factura factura;
     private String mensaje;
     private I_FacturaRepository fr=new FacturaRepository(Connector.getConnection());
-    private int buscarIdCliente;
+    private int buscarIdCliente=0;
 
     public FacturaManagedBean() {
         mensaje="";
@@ -31,6 +31,7 @@ public class FacturaManagedBean implements Serializable{
     }
     
     public List<Factura> getByIdCliente(){
+        if(buscarIdCliente==0)return fr.getAll();
         return fr.getByIdCliente(buscarIdCliente);
     }
 

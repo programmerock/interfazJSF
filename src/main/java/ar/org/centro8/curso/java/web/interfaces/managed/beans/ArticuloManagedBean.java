@@ -15,7 +15,7 @@ public class ArticuloManagedBean implements Serializable{
     private Articulo articulo;
     private String mensaje;
     private I_ArticuloRepository ar=new ArticuloRepository(Connector.getConnection());
-    private String bucarDescripcion;
+    private String bucarDescripcion="";
 
     public ArticuloManagedBean() {
         articulo=new Articulo();
@@ -33,6 +33,7 @@ public class ArticuloManagedBean implements Serializable{
     }
     
     public List<Articulo> getLikeDescripcion(){
+        if(bucarDescripcion.equals("")) return ar.getAll();
         return ar.getLikeDescripcion(bucarDescripcion);
     }
 
